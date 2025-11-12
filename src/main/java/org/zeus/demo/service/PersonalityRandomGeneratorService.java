@@ -4,11 +4,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PersonalityRandomGeneratorService {
-    public static String generateFirstName() {
+
+    public String generateFirstName() {
         return "ильнар";
     }
 
-    public static String generateLastName() {
+    public String generateLastName() {
         return "имиль";
     }
 }
