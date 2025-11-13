@@ -17,7 +17,7 @@ public class Bot {
     private String lastName;
     private String favoriteJoke;
     private String favoriteQuote;
-    private int luckyNumber;
+    private String favoriteAnimal;
 
     private Status status;
     private Behavior behavior;
@@ -124,11 +124,11 @@ public class Bot {
         this.favoriteQuote = favoriteQuote;
     }
 
-    public int getLuckyNumber() {
-        return luckyNumber;
+    public String getFavoriteAnimal() {
+        return favoriteAnimal;
     }
 
-    public void setLuckyNumber(int luckyNumber) {
-        this.luckyNumber = luckyNumber;
+    public void setFavoriteAnimal(String favoriteAnimal) {
+        this.favoriteAnimal = favoriteAnimal;
     }
 }

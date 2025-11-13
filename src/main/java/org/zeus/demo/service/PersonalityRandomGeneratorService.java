@@ -84,22 +84,20 @@ public class PersonalityRandomGeneratorService {
         }
     }
 
-    public static int generateLuckyNumber() {
+    public static String generateFavoriteAnimal() {
         try {
-            // Запрашиваем 1 случайное число от 1 до 100
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new"))
+                    .uri(URI.create("https://zoo-animal-api.herokuapp.com/animals/rand"))
                     .GET()
                     .build();
-
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            String body = response.body().trim(); // API возвращает plain text с числом
-            return Integer.parseInt(body);
-
-        } catch (IOException | InterruptedException | NumberFormatException e) {
+            String body = response.body();
+            int start = body.indexOf("\"name\":\"") + 8;
+            int end = body.indexOf("\"", start);
+            return body.substring(start, end);
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            return -1; // на случай ошибки
+            return "Unknown animal";
         }
     }
-
 }
