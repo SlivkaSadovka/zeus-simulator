@@ -6,7 +6,7 @@ import org.zeus.demo.service.PersonalityRandomGeneratorService;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "bots") // я не уверена, че там как табла выглядит, поэтому пока так
+@Table(name = "bots") // я не уверена, че там как табла выглядит, поэтому пока так\
 public class Bot {
 
     @Id
@@ -15,6 +15,9 @@ public class Bot {
 
     private String firstName;
     private String lastName;
+    private String favoriteJoke;
+    private String favoriteQuote;
+    private int luckyNumber;
 
     private Status status;
     private Behavior behavior;
@@ -103,5 +106,29 @@ public class Bot {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getFavoriteJoke() {
+        return favoriteJoke;
+    }
+
+    public void setFavoriteJoke(String favoriteJoke) {
+        this.favoriteJoke = favoriteJoke;
+    }
+
+    public String getFavoriteQuote() {
+        return favoriteQuote;
+    }
+
+    public void setFavoriteQuote(String favoriteQuote) {
+        this.favoriteQuote = favoriteQuote;
+    }
+
+    public int getLuckyNumber() {
+        return luckyNumber;
+    }
+
+    public void setLuckyNumber(int luckyNumber) {
+        this.luckyNumber = luckyNumber;
     }
 }
