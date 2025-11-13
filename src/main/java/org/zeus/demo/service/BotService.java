@@ -24,7 +24,7 @@ public class BotService {
         bot.setFirstName(PersonalityRandomGeneratorService.generateFirstName());
         bot.setLastName(PersonalityRandomGeneratorService.generateLastName());
         bot.setFavoriteJoke(PersonalityRandomGeneratorService.generateFavoriteJoke());
-        bot.setFavoriteAnimal(PersonalityRandomGeneratorService.generateFavoriteAnimal());
+        bot.setFavoriteAnimal(PersonalityRandomGeneratorService.generateFavoriteBook());
         bot.setFavoriteQuote(PersonalityRandomGeneratorService.generateFavoriteQuote());
         bot.setStatus(Status.ALIVE);
         return botRepository.save(bot);
