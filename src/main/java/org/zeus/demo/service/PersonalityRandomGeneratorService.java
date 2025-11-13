@@ -1,5 +1,7 @@
 package org.zeus.demo.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.util.Random;
 
 @Service
 public class PersonalityRandomGeneratorService {
-
+    private static final ObjectMapper mapper = new ObjectMapper();
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final Random random = new Random();
 
@@ -70,34 +72,33 @@ public class PersonalityRandomGeneratorService {
     public static String generateFavoriteQuote() {
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.quotable.io/random"))
+                    .uri(URI.create("https://aot-api.vercel.app/quote"))
                     .GET()
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            String body = response.body();
-            int start = body.indexOf("\"content\":\"") + 11;
-            int end = body.indexOf("\"", start);
-            return body.substring(start, end);
+
+
+            JsonNode node = mapper.readTree(response.body());
+            return node.get("quote").asText();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             return "No quote available";
         }
     }
 
-    public static String generateFavoriteAnimal() {
+    public static String generateFavoriteBook() {
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://zoo-animal-api.herokuapp.com/animals/rand"))
+                    .uri(URI.create("https://potterapi-fedeperin.vercel.app/en/books/random"))
                     .GET()
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            String body = response.body();
-            int start = body.indexOf("\"name\":\"") + 8;
-            int end = body.indexOf("\"", start);
-            return body.substring(start, end);
+
+            JsonNode node = mapper.readTree(response.body());
+            return node.get("title").asText();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            return "Unknown animal";
+            return "Unknown book";
         }
     }
 }

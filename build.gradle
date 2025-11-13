@@ -28,6 +28,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    implementation("com.fasterxml.jackson.core:jackson-core:2.20.1")
+
     // db
     implementation 'org.postgresql:postgresql:42.2.5'
 
