@@ -4,5 +4,5 @@ public enum Status {
     UNKNOWN,
     ALIVE,
     DEAD,
-    ELYSIUM
+    ACTIVE, ELYSIUM
 }
