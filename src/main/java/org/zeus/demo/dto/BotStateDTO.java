@@ -1,7 +1,10 @@
 package org.zeus.demo.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.zeus.demo.model.Status;
 
+@Getter
 public class BotStateDTO {
     private Long id;
     private String name;
@@ -12,9 +15,4 @@ public class BotStateDTO {
         this.name = name;
         this.status = status;
     }
-
-    // геттеры и сеттеры
-    public Long getId() { return id; }
-    public String getName() { return name; }
-    public Status getStatus() { return status; }
 }
