@@ -1,0 +1,52 @@
+<style>
+    .label {
+        position: absolute;
+        font-size: 12px;
+        color: #0df2ff;
+        transition: transform 6s linear;
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    const API = "/bots/state";
+
+    fetch(API)
+        .then(r => r.json())
+        .then(dbBots => {
+        dbBots.forEach(b => spawnBot(b));
+    });
+
+    function spawnBot(dbBot) {
+        // кружок
+        let bot = document.createElement("div");
+        bot.classList.add("bot");
+        map.appendChild(bot);
+
+        // подпись (имя)
+        let label = document.createElement("div");
+        label.classList.add("label");
+        label.textContent = dbBot.firstName; // имя из базы
+        map.appendChild(label);
+
+        // старт
+        let x = Math.random() * map.clientWidth;
+        let y = Math.random() * map.clientHeight;
+        bot.style.transform = `translate(${x}px, ${y}px)`;
+        label.style.transform = `translate(${x}px, ${y - 18}px)`; // чуть выше кружка
+
+        // движение к случайной точке по таймауту
+        const move = () => {
+            let tx = Math.random() * (map.clientWidth - 14);
+            let ty = Math.random() * (map.clientHeight - 14);
+            bot.style.transform = `translate(${tx}px, ${ty}px)`;
+            label.style.transform = `translate(${tx}px, ${ty - 18}px)`;
+
+            let t = 1000 + Math.random() * 4000;
+            setTimeout(move, t);
+        };
+
+        let first = 1000 + Math.random() * 4000;
+        setTimeout(move, first);
+    }
+</script>
