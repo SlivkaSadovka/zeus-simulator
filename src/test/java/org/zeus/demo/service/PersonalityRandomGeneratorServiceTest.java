@@ -72,4 +72,26 @@ class PersonalityRandomGeneratorServiceTest {
         }
     }
 
+    @Test
+    void testGenerateFavoriteBook() throws Exception {
+        // Мокаем HttpClient и HttpResponse
+        HttpClient mockClient = mock(HttpClient.class);
+        @SuppressWarnings("unchecked")
+        HttpResponse<String> mockResponse = mock(HttpResponse.class);
+
+        PersonalityRandomGeneratorService service = new PersonalityRandomGeneratorService();
+
+        var clientField = PersonalityRandomGeneratorService.class.getDeclaredField("client");
+        clientField.setAccessible(true);
+        clientField.set(service, mockClient);
+
+        when(mockClient.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
+                .thenReturn(mockResponse);
+
+        when(mockResponse.body())
+                .thenReturn("{\"title\":\"Harry Potter and the Goblet of Fire\"}");
+
+        String result = service.generateFavoriteBook();
+        assertEquals("Harry Potter and the Goblet of Fire", result);
+    }
 }
