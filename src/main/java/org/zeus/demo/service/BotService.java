@@ -12,20 +12,19 @@ import java.util.Optional;
 public class BotService {
 
     private final BotRepository botRepository;
-    private final PersonalityRandomGeneratorService personalityGenerator;
+    private final PersonalityRandomGeneratorService personalityGenerator = new PersonalityRandomGeneratorService();
 
-    public BotService(BotRepository botRepository, PersonalityRandomGeneratorService personalityGenerator) {
+    public BotService(BotRepository botRepository) {
         this.botRepository = botRepository;
-        this.personalityGenerator = personalityGenerator;
     }
 
     public Bot createBot() {
         Bot bot = new Bot();
-        bot.setFirstName(PersonalityRandomGeneratorService.generateFirstName());
-        bot.setLastName(PersonalityRandomGeneratorService.generateLastName());
-        bot.setFavoriteJoke(PersonalityRandomGeneratorService.generateFavoriteJoke());
-        bot.setFavoriteAnimal(PersonalityRandomGeneratorService.generateFavoriteBook());
-        bot.setFavoriteQuote(PersonalityRandomGeneratorService.generateFavoriteQuote());
+        bot.setFirstName(personalityGenerator.generateFirstName());
+        bot.setLastName(personalityGenerator.generateLastName());
+        bot.setFavoriteJoke(personalityGenerator.generateFavoriteJoke());
+        bot.setFavoriteAnimal(personalityGenerator.generateFavoriteBook());
+        bot.setFavoriteQuote(personalityGenerator.generateFavoriteQuote());
         bot.setStatus(Status.ALIVE);
         return botRepository.save(bot);
     }

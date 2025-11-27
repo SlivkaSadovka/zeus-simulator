@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.springframework:spring-jdbc'
 
     // tests
+    testImplementation("org.mockito:mockito-core:5.20.0")
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
