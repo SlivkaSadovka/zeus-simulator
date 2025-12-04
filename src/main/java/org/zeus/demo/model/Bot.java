@@ -22,7 +22,7 @@ public class  Bot {
     private String lastName;
     private String favoriteJoke;
     private String favoriteQuote;
-    private String favoriteAnimal;
+    private String favoriteBook;
 
     private Status status;
     private Behavior behavior;

@@ -27,7 +27,7 @@ class BotTest {
         assertNull(bot.getLastName());
         assertNull(bot.getFavoriteJoke());
         assertNull(bot.getFavoriteQuote());
-        assertNull(bot.getFavoriteAnimal());
+        assertNull(bot.getFavoriteBook());
         assertNull(bot.getCreatedAt());
         assertNull(bot.getUpdatedAt());
     }
@@ -60,18 +60,18 @@ class BotTest {
         bot.setLastName("Thunder");
         bot.setFavoriteJoke("Why did the chicken cross the road?");
         bot.setFavoriteQuote("To be or not to be");
-        bot.setFavoriteAnimal("Eagle");
+        bot.setFavoriteBook("Eagle");
         bot.setStatus(Status.ACTIVE);
-        bot.setBehavior(Behavior.FRIENDLY);
+        bot.setBehavior(Behavior.SINNER);
         bot.setFaithLevel(10);
 
         assertEquals("Zeus", bot.getFirstName());
         assertEquals("Thunder", bot.getLastName());
         assertEquals("Why did the chicken cross the road?", bot.getFavoriteJoke());
         assertEquals("To be or not to be", bot.getFavoriteQuote());
-        assertEquals("Eagle", bot.getFavoriteAnimal());
+        assertEquals("Eagle", bot.getFavoriteBook());
         assertEquals(Status.ACTIVE, bot.getStatus());
-        assertEquals(Behavior.FRIENDLY, bot.getBehavior());
+        assertEquals(Behavior.SINNER, bot.getBehavior());
         assertEquals(10, bot.getFaithLevel());
     }
 }
