@@ -2,6 +2,7 @@ package org.zeus.demo.service;
 
 import org.springframework.stereotype.Service;
 import org.zeus.demo.dto.BotStateDTO;
+import org.zeus.demo.model.Behavior;
 import org.zeus.demo.model.Bot;
 import org.zeus.demo.model.Status;
 import org.zeus.demo.repository.BotRepository;
@@ -26,6 +27,8 @@ public class BotService {
         bot.setFavoriteBook(personalityGenerator.generateFavoriteBook());
         bot.setFavoriteQuote(personalityGenerator.generateFavoriteQuote());
         bot.setStatus(Status.ALIVE);
+        bot.setBehavior(Behavior.random());
+        System.out.println("bot created");
         return botRepository.save(bot);
     }
 
@@ -69,9 +72,19 @@ public class BotService {
         botRepository.deleteById(id);
     }
 
+    public void deleteAll() {
+        botRepository.deleteAll();
+        System.out.println("bots deleted");
+    }
+
     public List<BotStateDTO> getBotsState() {
         return botRepository.findAll().stream()
-                .map(bot -> new BotStateDTO(bot.getId(), bot.getFirstName(), bot.getStatus()))
+                .map(bot -> new BotStateDTO(
+                        bot.getId(),
+                        bot.getFirstName(),
+                        bot.getStatus(),
+                        bot.getBehavior()   // ← ДОБАВЛЕНО
+                ))
                 .toList();
     }
 

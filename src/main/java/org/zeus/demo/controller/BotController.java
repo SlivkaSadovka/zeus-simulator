@@ -22,6 +22,11 @@ public class BotController {
         return botService.createBot();
     }
 
+    @DeleteMapping("/delete-all")
+    public void deleteAllBots() {
+        botService.deleteAll();
+    }
+
     @GetMapping
     public List<Bot> getAllBots() {
         return botService.getAllBots();
