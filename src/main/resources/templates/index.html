@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Zeus Simulator 2D</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div id="map">
+    <div id="zeus"></div>
+    <div id="zeus-message"></div>
+    <div id="credits"></div>
+
+    <div id="controls">
+        <div class="btn" onclick="addBot()">Добавить бота</div>
+        <div class="btn" onclick="deleteAllBots()">Удалить всех</div>
+        <div class="btn" onclick="enableLightning(event)">⚡ Молния</div>
+
+        <div class="btn dev" onclick="devFaith(1)">+1 вера</div>
+        <div class="btn dev" onclick="devFaith(-1)">-1 вера</div>
+    </div>
+
+    <div id="status">Ботов нет</div>
+
+    <div id="faithbar-container">
+        <div id="faithbar-fill"></div>
+    </div>
+    <div id="faith-value">50</div>
+</div>
+
+<script src="/js/state.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/bots.js"></script>
+<script src="/js/lightning.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/music.js"></script>
+</body>
+</html>
