@@ -169,8 +169,38 @@ html, body {
   image-rendering:pixelated;
 }
 
+#map.elysium {
+  background: radial-gradient(circle at center, #fffbe6, #0a0f24);
+  transition: background 2s;
+}
+
 @keyframes floatZeus {
   0%   { transform:translate(-50%,-50%) translateY(-10px); }
   50%  { transform:translate(-50%,-50%) translateY(10px); }
   100% { transform:translate(-50%,-50%) translateY(-10px); }
 }
+
+#credits {
+  position: absolute;
+  left: 50%;
+  top: 72%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  text-align: center;
+  color: #e6d9a2;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.7);
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+
+.dev {
+  opacity: 0.7;
+  filter: grayscale(0.4);
+}
+.dev:hover {
+  opacity: 1;
+}
+
