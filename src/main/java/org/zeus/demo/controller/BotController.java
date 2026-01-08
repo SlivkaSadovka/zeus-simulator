@@ -37,7 +37,7 @@ public class BotController {
         return botService.updateBotStatus(id, status);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteBot(@PathVariable Long id) {
         botService.deleteBot(id);
     }
